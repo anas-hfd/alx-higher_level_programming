@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-for alpha in range(ord('z'), ord('A') - 1, -1):
-    if alpha % 2 == 0:
-        print(chr(alpha).lower(), end="")
-    else:
-        print(chr(alpha).upper(), end="")
+for alphabet in range(122, 96, -1):
+    if alphabet % 2 != 0:
+        alphabet = alphabet - 32
+    print("{:s}".format(chr(alphabet)), end='')
