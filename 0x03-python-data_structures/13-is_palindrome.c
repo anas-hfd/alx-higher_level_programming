@@ -1,33 +1,51 @@
 #include "lists.h"
 
 /**
- * is_palindrome - checks if the list is palind
+ * is_palindrome = checks if a list is palindrome
  * @head: ptr to ptr to head
- * Return: int
+ * Return;: int
  */
 
 int is_palindrome(listint_t **head)
 {
-	listint_t *curr = *head, *palind = *head;
-	int count = 0, i = 0, j = 0;
+	listint_t *slow = *head;
+	listint_t *fast = *head;
+	listint_t *prev = NULL;
+	listint_t *temp;
+	int is_palindrome = 1;
 
-	if (!*head)
-		return (1);
-
-	while (curr)
+	if (*head == NULL || (*head)->next == NULL)
 	{
-		curr = curr->next;
-		count++;
+		return (is_palindrome);
 	}
-	curr = *head;
-	for (i = 1; i <= count; i++)
+	while (fast != NULL && fast->next != NULL)
 	{
-		for (j = i; j <= count - i; j++)
-			palind = palind->next;
-		if (curr->n != palind->n)
-			return (0);
-		curr = curr->next;
-		palind = curr;
+		fast = fast->next->next;
+		temp = slow;
+		slow = slow->next;
+		temp->next = prev;
+		prev = temp;
 	}
-	return (1);
+	if (fast != NULL)
+		slow = slow->next;
+	while (slow != NULL)
+	{
+		if (prev->n != slow->n)
+		{
+			is_palindrome = 0;
+			break;
+		}
+		prev = prev->next;
+		slow = slow->next;
+	} temp = NULL;
+	fast = prev;
+	while (fast != NULL)
+	{
+		prev = fast->next;
+		fast->next = temp;
+		temp = fast;
+		fast = prev;
+	}
+	*head = temp;
+	return (is_palindrome);
 }
