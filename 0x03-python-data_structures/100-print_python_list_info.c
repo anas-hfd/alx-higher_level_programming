@@ -9,6 +9,7 @@
  * Return: void
  */
 
+
 void print_python_list_info(PyObject *p)
 {
 	Py_ssize_t s, i, alloc;
@@ -22,6 +23,6 @@ void print_python_list_info(PyObject *p)
 	for (i = 0; i < s; i++)
 	{
 		object = PyList_GetItem(p, i);
-		printf("Element %ld: %s\n", i, Py_TYPE(obj)->tp_name);
+		printf("Element %ld: %s\n", i, Py_TYPE(object)->tp_name);
 	}
 }
