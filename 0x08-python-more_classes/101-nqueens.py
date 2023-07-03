@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-from sys import argv
-"""nqueens backtracking"""
+"""nqueens backtracking """
 
+
+from sys import argv
 
 if __name__ == "__main__":
     a = []
@@ -21,14 +22,14 @@ if __name__ == "__main__":
         a.append([i, None])
 
     def already_exists(y):
-        """check if the queen exist in that y value"""
+        """check if a queen already exist in that y value"""
         for x in range(n):
             if y == a[x][1]:
                 return True
         return False
 
     def reject(x, y):
-        """reject the solution or not"""
+        """reject the solution"""
         if (already_exists(y)):
             return False
         i = 0
@@ -44,7 +45,7 @@ if __name__ == "__main__":
             a[i][1] = None
 
     def nqueens(x):
-        """recursive backtracking function to find the solution"""
+        """recursive backtracking to find the solution"""
         for y in range(n):
             clear_a(x)
             if reject(x, y):
