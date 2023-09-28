@@ -1,26 +1,28 @@
-#!/user/bin/python3
+#!/usr/bin/python3
 """
-find the peak of an unsorted list of integers
-by using the binary searsh-like algorithm
+Defines a function that findes the peak of a list of integers
 """
 
 
 def find_peak(list_of_integers):
+    """ Finds the peak in a list of integers """
     if list_of_integers == []:
         return None
-    '''Define the start and end indices for the search'''
-    start, end = 0, len(list_of_integers) - 1
 
-    '''Perform binary search-like comparison'''
-    while start < end:
-        '''calculate the middle index'''
-        mid = (start + end) // 2
-        if list_of_integers[mid] < list_of_integers[mid + 1]:
-            start = mid + 1
-            '''Move the search range to the right'''
-        else:
-            end = mid
-            '''Move the search range to the left'''
+    length = len(list_of_integers)
+    m = int(length / 2)
+    li = list_of_integers
 
-    '''The peak element is at 'start' or 'end' (they are equal)'''
-    return list_of_integers[start]
+    if m - 1 < 0 and m + 1 >= length:
+        return li[m]
+    elif m - 1 < 0:
+        return li[m] if li[m] > li[m + 1] else li[m + 1]
+    elif m + 1 >= length:
+        return li[m] if li[m] > li[m - 1] else li[m - 1]
+
+    if li[m - 1] < li[m] > li[m + 1]:
+        return li[m]
+
+    if li[m + 1] > li[m - 1]:
+        return find_peak(li[m:])
+    return find_peak(li[:m])
