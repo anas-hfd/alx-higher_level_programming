@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 '''
-takes in URL and email, sends POST request to the URL with the email 
+takes in URL and email, sends POST request to the URL with the email
 as a parameter, and displays the body of the response (decoded in utf-8)
 '''
 import sys
