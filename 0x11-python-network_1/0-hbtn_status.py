@@ -7,7 +7,7 @@ if __name__ == '__main__':
     request = urllib.request.Request(url)
     with urllib.request.urlopen(request) as response:
         data = response.read()
-        content = data.decode(UTF-8)
+        content = data.decode("UTF-8")
         print ("Body response:")
         print ("\t- type: {}".format(type(data)))
         print ("\t- content: {}".format(data))
